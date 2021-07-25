@@ -2,7 +2,9 @@
     --dark-green:#064E3B;
     --faint-green:#A7F3D0;
 }
-
+body{
+    font-family: 'Baloo Bhai 2', cursive;
+}
 *{
     padding: 0;
     margin: 0;
@@ -25,6 +27,9 @@ h1,p{
     color: white;
     margin-bottom: 1rem;
 
+}
+p{
+    font-size: x-large;
 }
 
 .label{
