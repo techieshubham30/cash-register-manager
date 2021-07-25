@@ -1,10 +1,10 @@
-var billAmt=document.querySelector('.bill');
-var cashAmt=document.querySelector('.cash');
+
 var btN=document.querySelector('.btn');
 btN.addEventListener('click',showOutput)
 
-
 function showOutput(){
+var billAmt=document.querySelector('.bill');
+var cashAmt=document.querySelector('.cash');
 
 var res=parseInt(cashAmt.value,10)-parseInt(billAmt.value,10);
 var cnt_2000=0;
