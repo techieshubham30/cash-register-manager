@@ -1,61 +1,45 @@
+const billAmount=document.querySelector('.bill-amount');
+const cashGiven=document.querySelector('.cash-given');
+const checkButton=document.querySelector('.check');
 
-var btN=document.querySelector('.btn');
-btN.addEventListener('click',showOutput)
+const message=document.querySelector('.error-message');
+const noOfNotes=document.querySelectorAll('.no-of-notes');
+const availableNotes=[2000,500,100,20,10,5,1];
 
-function showOutput(){
-var billAmt=document.querySelector('.bill');
-var cashAmt=document.querySelector('.cash');
+checkButton.addEventListener("click",validateBillAndCashAmount);
 
-var res=parseInt(cashAmt.value,10)-parseInt(billAmt.value,10);
-var cnt_2000=0;
-var cnt_500=0;
-var cnt_100=0;
-var cnt_20=0;
-var cnt_10=0;
-var cnt_5=0;
-var cnt_1=0;
-if(res>0){
+function validateBillAndCashAmount(){
+    hideMessage();
+    if(Number(billAmount.value)>0){
+        if(Number(cashGiven.value)>=Number(billAmount.value)){
+            const amountToBeReturned=Number(cashGiven.value)-Number(billAmount.value);
+            calculateChange(amountToBeReturned);
 
-    while(res!=0){
-        if(res>=2000){
-            cnt_2000+=Math.floor(res/2000);
-            res=res%2000;
-        }else if(res>=500){
-            cnt_500+=Math.floor(res/500);
-            res=res%500;
-        }else if(res>=100){
-            cnt_100+=Math.floor(res/100);
-            res=res%100;
-        }else if(res>=20){
-            cnt_20+=Math.floor(res/20);
-            res=res%20;
-        }else if(res>=10){
-            cnt_10+=Math.floor(res/10);
-            res=res%10;
-        }else if(res>=5){
-            cnt_5+=Math.floor(res/5);
-            res=res%5;
-        }else if(res>=1){
-            cnt_1+=Math.floor(res/1);
-            res=res%1;
+        }else{
+            showMessage("The cash should be atleast equal to bill amount");
         }
+
+    }else{
+        showMessage("The bill amount should be greater than 0");
+
     }
 }
 
-    var notesOF2000=document.querySelector('.noOfNotes2000');
-    var notesOF500=document.querySelector('.noOfNotes500');
-    var notesOF100=document.querySelector('.noOfNotes100');
-    var notesOF20=document.querySelector('.noOfNotes20');
-    var notesOF10=document.querySelector('.noOfNotes10');
-    var notesOF5=document.querySelector('.noOfNotes5');
-    var notesOF1=document.querySelector('.noOfNotes1');
-
-       notesOF2000.innerText=cnt_2000;
-       notesOF500.innerText=cnt_500;
-       notesOF100.innerText=cnt_100;
-       notesOF20.innerText=cnt_20;
-       notesOF10.innerText=cnt_10;
-       notesOF5.innerText=cnt_5;
-       notesOF1.innerText=cnt_1;
-
+function calculateChange(amountToBeReturned){
+    for(var i=0;i<availableNotes.length;i++){
+        var numberOfNotes=Math.trunc(amountToBeReturned/availableNotes[i]);
+        amountToBeReturned=amountToBeReturned%availableNotes[i];
+        noOfNotes[i].innerText=numberOfNotes;
+    }
 }
+
+function hideMessage(){
+    message.style.display="none";
+}
+
+function showMessage(mgs){
+    message.style.display="block";
+    message.innerText=mgs;
+}
+
+

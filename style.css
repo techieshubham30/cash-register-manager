@@ -23,7 +23,7 @@ body{
 
 }
 
-h1,p{
+h1,p,.error-message{
     color: white;
     margin-bottom: 1rem;
 
@@ -32,11 +32,12 @@ p{
     font-size: x-large;
 }
 
-.label{
+label,.label{
     padding-top: 1.5rem;
     padding-right: 1rem;
     padding-bottom: 0.5rem;
     color: var(--faint-green);
+    font-size: xx-large;
 }
 
 input{
@@ -57,7 +58,7 @@ button{
 }
 
 
-.output table,th,td{
+.error-message table,th,td{
     padding:0.3rem;
     color: var(--dark-green);
     background-color: var(--faint-green);
