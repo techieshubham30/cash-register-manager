@@ -63,10 +63,13 @@ button{
     color: var(--dark-green);
     background-color: var(--faint-green);
     border: 2px solid var(--dark-green);
-    border-collapse: collapse;
 }
 
 table{
+    
     width: 100%;
+    border-collapse: collapse;
+
+
     
 }
